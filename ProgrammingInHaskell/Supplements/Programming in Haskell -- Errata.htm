@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0041)http://www.cs.nott.ac.uk/~gmh/errata.html -->
+<HTML><HEAD><META content="IE=5.0000" http-equiv="X-UA-Compatible">
+ <TITLE> Programming in Haskell -- Errata </TITLE> 
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META name="GENERATOR" content="MSHTML 11.00.9600.16412"></HEAD> 
+<BODY>
+<H3> Programming in Haskell -- Errata</H3>
+<UL>
+  <P>
+  <LI> Pages 7, 8, 9 and 11.  Appendix B shows how the special Haskell symbols 
+  that are used in the book are typed using a normal keyboard.  This appendix is 
+  mentioned on page 12, but should have been mentioned earlier and more 
+  prominently. 
+  <P></P>
+  <LI> Page 20. The additional "such as" in the second paragraph should be 
+  removed. 
+  <P></P>
+  <LI> Page 24. The phrase "is a instance" in the explanation of the type of + 
+  should be "is an instance". 
+  <P></P>
+  <LI> Pages 23, 42, 43, 62, 64, 71, 72, 79 and 80. The use of library functions 
+  on characters requires the <EM>Char</EM> library to be loaded, otherwise the 
+  Hugs system will produce an error. See the entry for pages 158 and 159 below 
+  for further details. 
+  <P></P>
+  <LI> Page 44. The library function <EM>fromInt</EM> has been replaced by a 
+  more general function called <EM>fromIntegral</EM>. (*) 
+  <P></P>
+  <LI> Page 57. The word "removing" in the second paragraph should be "remove". 
+  <P></P>
+  <LI> Page 60. The type for <EM>halve</EM> in exercise 5 should be as follows: 
+  (*) 
+<PRE>   halve :: [a] -&gt; ([a],[a])
+</PRE>
+  <P></P>
+  <LI> Page 66.  The definition for the append operator ++ using <EM>foldr</EM> 
+  is not valid Haskell, due to the use of a section on the left-hand side of the 
+  definition, but is a valid property of ++. 
+  <P></P>
+  <LI> Page 67.  The definition for the append operator ++ using <EM>foldl</EM> 
+  is not intended to be recursive, otherwise it won't terminate.  In particular, 
+  the use of ++ in the body is supposed to refer to the prelude version.  The 
+  following definition for an append function has the correct behaviour: 
+<PRE>   append   :: [a] -&gt; [a] -&gt; [a]
+   append xs = foldl (\ys y -&gt; ys ++ [y]) xs
+</PRE>
+  <P></P>
+  <LI> Pages 74 to 78.  For technical reasons concerning the monadic nature of 
+  parsers, a number of the basic definitions cannot be entered directly as shown 
+  in the text, otherwise the Hugs system will produce an error.  A link to a 
+  library file that makes the necessary changes, and suggestions for further 
+  reading on the connection between parsers and monads, is given in the chapter 
+  remarks on page 85. 
+  <P></P>
+  <LI> Page 76.  The function <EM>result</EM> defined in the first line should 
+  be called <EM>return</EM>, and the result of the first <EM>parse</EM> example 
+   should be [(1,"abc")]. (*) 
+  <P></P>
+  <LI> Page 89.  The action <EM>putChar 'a'</EM> writes the character <EM>a</EM> 
+  to the screen, rather than <EM>'a'</EM>. 
+  <P></P>
+  <LI> Page 90. The action <EM>getCh</EM> is no longer provided as a primitive 
+  in Hugs, but can be defined in Haskell as follows: 
+<PRE>   import System.IO 
+
+   getCh :: IO Char
+   getCh  = do hSetEcho stdin False
+               c &lt;- getChar
+               hSetEcho stdin True
+               return c
+</PRE>
+  <P>This definition works with the Glasgow Haskell Compiler, but may not work 
+  with some Haskell systems, such as Hugs. 
+  <P></P>
+  <LI> Page 91. The control characters used to define the actions <EM>beep</EM>, 
+  <EM>cls</EM>, and <EM>goto (x,y)</EM> may not work on some Haskell systems, 
+  such as WinHugs. 
+  <P></P>
+  <LI> Page 94.  The sentence beginning "That is, we can think of the board as 
+  really being a torus," should conclude "which can be viewed as  the surface of 
+  a three-dimensional doughnut shaped object". (*) 
+  <P></P>
+  <LI> Page 115.  The keyword <EM>type</EM> in exercise 3 should be 
+  <EM>data</EM>. 
+  <P></P>
+  <LI> Page 136.  The example evaluation for <EM>sumwith</EM> should have 
+  expressions of the form <EM>sumwith $! v xs</EM> parenthesised as <EM>(sumwith 
+  $! v) xs</EM>. 
+  <P></P>
+  <LI> Page 140.  The additional "their" in the second paragraph should be 
+  removed. 
+  <P></P>
+  <LI> Page 146.  The expression [<EM>x</EM>] ++ <EM>ys</EM> on the fourth line 
+  should be [<EM>x</EM>] ++ <EM>xs</EM>, and the base case calculation should be 
+  as follows: (*) 
+<PRE>     reverse ([] ++ ys)
+   =   { applying ++ }
+     reverse ys
+   =   { property of ++, see exercise 5 }
+     reverse ys ++ []
+   =   { unapplying reverse }
+     reverse ys ++ reverse []
+</PRE>
+  <P></P>
+  <LI> Page 147.  The first "the" in the last paragraph should be "than". 
+  <P></P>
+  <LI> Page 148.  The definition for <EM>reverse</EM> on the second last line 
+  should be as follows: (*) 
+<PRE>   reverse = foldl (\xs x -&gt; x : xs) []
+</PRE>
+  <P></P>
+  <LI> Page 149.  The word "trees-like" in the first paragraph  should be 
+  "tree-like". 
+  <P></P>
+  <LI> Page 151.  The word "to" on the second line should be removed. (*) 
+  <P></P>
+  <LI> Page 152.  The variable <EM>ys</EM> on the last line should be 
+  <EM>d</EM>. (*) 
+  <P></P>
+  <LI> Page 155.  The first "a" in exercise 9 should be removed. 
+  <P></P>
+  <LI> Pages 158 and 159. The character functions <EM>isLower</EM>, 
+  <EM>isUpper</EM>, <EM>isAlpha</EM>, <EM>isDigit</EM>, <EM>isAlphaNum</EM>, 
+  <EM>isSpace</EM>, <EM>ord</EM>, <EM>chr</EM>, <EM>digitToInt</EM>, 
+  <EM>intToDigit</EM>, <EM>toLower</EM>, and <EM>toUpper</EM> listed in section 
+  A.3 are no longer part of the standard prelude, but are included in a separate 
+  library called <EM>Char</EM>.  This library can be loaded in a Hugs session by
+   entering the following command at the &gt; prompt: 
+<PRE>   :load Char
+</PRE>
+  <P>It can be loaded in a Haskell script by including the following declaration 
+  at the start of the script: 
+<PRE>   import Char
+</PRE>
+  <P></P>
+  <LI> Page 161.  The library function <EM>or</EM> decides if any logical value 
+  in a list is <EM>True</EM>, not <EM>False</EM>. (*) 
+  <P></P>
+  <LI> Page 167.  The journal "Communications of the ACM" in  reference 11 
+  should be "ACM Computing Surveys". </LI></UL>
+<P>Many thanks to Ki Yung Ahn, Paul Brown, Bob Davison, Sergio Queiroz de 
+Medeiros, David Duke, Robert Fabian, Ben Fleis, Robert Furber, Philip 
+Hölzenspies, Andrew Kish, Tomoyas Kobayashi, Florian Larysch, Carlos Oroz, 
+Douglas Philips, Bruce Turner, Marco Valtorta, and Kazu Yamamoto for pointing 
+out errors.  Errata items marked (*) have been corrected in the second printing 
+of the book, September 2007. </P></BODY></HTML>

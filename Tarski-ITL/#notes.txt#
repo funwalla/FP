@@ -1,0 +1,46 @@
+§ 13 symbolism of sentential calculus; truth functions, and truth tables
+
+Fundamental truth tables
+
+p   q   p ∧ q   p ∨ q   p → q   p = q
+
+T   T     T        T       T       T
+T   F     F        T       F       F
+F   T     F        T       T       F
+F   F     F        F       T       T
+
+(p ∨ q) → (p ∧ r)
+
+p   q   r   p ∨ q   p ∧ r   (p ∨ q) → (p ∧ r)
+
+T   T   T     T        T              T
+F   T   T     T        F              F
+T   F   T     T        T              T
+F   F   T     F        F              T
+T   T   F     T        F              F
+F   T   F     T        F              F
+T   F   F     T        F              F
+F   F   F     F        F              T
+
+TTs for the laws of sentential calculus
+
+Law of simplification  (p ∧ q) → p       (∧e1)
+p   q   p ∧ q   (p ∧ q) → p
+T   T     T              T
+F   T     F              T
+T   F     F              T
+F   F     F              T
+
+Law of contradiction     ¬ [p ∧ (¬p)]
+p   ¬p      p ∧ (¬p)    ¬ [p ∧ (¬p)]
+T   F         F               T
+F   T         F               T
+
+Law of excluded middle   p ∨ (¬p)
+p   ¬p      p ∨ (¬p)
+T   F         T
+F   T         T
+
+Laws of associativity
+
+

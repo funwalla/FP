@@ -1,0 +1,14 @@
+doubleMe x = x + x
+
+removeNonUppercase :: [Char] -> [Char]  
+removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
+
+factorial :: Integer -> Inte
+factorial n = product [1 .. n]
+
+circumference :: Float -> Float  
+circumference r = 2 * pi * r 
+
+circumference' :: Double -> Double  
+circumference' r = 2 * pi * r
+

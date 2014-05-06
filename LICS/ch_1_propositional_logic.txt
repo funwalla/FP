@@ -1,0 +1,504 @@
+§ 1.2.1 Rules for natural deduction
+
+=======================================================
+The rules for conjunction (∧)
+
+and-introduction:  φ    ψ
+                   ------  ∧i
+                   φ ∧ ψ 
+
+and-elimination:  φ ∧ ψ             φ ∧ ψ 
+                  ------  ∧e1       ------  ∧e2   (1.1)
+                    φ                  ψ 
+=======================================================
+
+Example 1.4
+Prove the sequent p ∧ q, r ⊢ q ∧ r is valid
+
+1    p ∧ q          premise
+2    r               premise
+3    q               ∧e2 1
+4    q ∧ r          ∧i 3,2
+
+Prove that (p ∧ q) ∧ r, s ∧ t ⊢ q ∧ s
+
+1    (p ∧ q) ∧ r      premise
+2    s ∧ t             premise
+3    p ∧ q             ∧e1 1
+4    q                  ∧e2 3
+5    s                  ∧e1 2
+6    q ∧ s             ∧i 4,5
+
+========================================================
+The rules of double negation
+
+¬ ¬ φ            φ 
+-----  ¬¬ e    -----  ¬¬ i
+  φ             ¬¬φ 
+=======================================================
+
+Example 1.5
+Prove the sequent p, ¬ ¬ (q ∧ r) ⊢ ¬ ¬ p ∧ r
+
+1     p                premise
+2     ¬¬(q ∧ r)       premise
+3     ¬¬ p             ¬¬ i 1
+4     q ∧ r           ¬¬ e 2
+5     r                ∧ e2 4
+6     ¬¬ p ∧ r        ∧ i 3,5
+
+=======================================================
+Modus ponens   (implies-elimination, → e)
+
+(Modus ponendo ponens: the way that affirms by affirming)
+
+φ  φ → ψ 
+--------  → e
+   ψ 
+
+Modus tollens
+
+φ → ψ   ¬ ψ
+-----------  MT
+   ¬ φ
+=======================================================
+
+Example 1.7
+Prove p → (q → r), p, ¬ r ⊢ ¬ q
+
+1     p → (q → r)       premise
+2     p                 premise
+3     ¬ r               premise
+4     q → r             → e 1,2 (MP)
+5     ¬ q               MT 4,3
+
+Example 1.8
+Prove ¬ p → q, ¬ q ⊢ p
+
+1     ¬ p → q           premise
+2     ¬ q               premise
+3     ¬ ¬ p             MT 1,2
+4     p                 ¬¬ e 3
+
+Prove p → ¬ q, q ⊢ ¬ p
+
+1     p → ¬ q           premise
+2     q                 premise
+3     ¬¬ q              ¬¬ i 2
+4     ¬ p               MT 1,3
+
+=======================================================
+implies introduction (→ i)
+
+1       p → q           premise
+2         ¬ q           assumption
+3         ¬ p           MT 1,2
+4       ¬ q → ¬ p       → i 2,3
+
+
+  |φ|
+  |.|
+  |.|
+  |ψ|
+------  → i
+φ → ψ 
+=======================================================
+
+Example
+Prove ¬ q → ¬ p ⊢ p → ¬¬ q
+
+1     ¬ q → ¬ p         premise
+2       p               assumption
+3       ¬¬ p            ¬¬ i 2
+4       ¬¬ q            MT 1,3
+5     p → ¬¬ q          → i 2-4
+
+Example 1.11 
+Prove ⊢ (q → r) → ((¬ q → ¬ p) → (p → r)) is valid
+
+1     q → r                               assumption
+2       ¬ q → ¬ p                         assumption
+3         p                               assumption
+4         ¬¬ p                            ¬¬ i 3
+5         ¬¬ q                            MT 2,4
+6         q                               ¬¬ e 5
+7         r                               MP 1,6  (→ e)
+8       p → r                             → i 3-7
+9     (¬ q → ¬ p) → p → r                 → i 2-8
+10    (q → r) → ((¬ q → ¬ p) → (p → r))   → i 1-9
+
+Example 1.13  
+Prove  p ∧ q → r ⊢ p → (q → r)
+
+1    p ∧ q → r         premise
+2      p                assumption
+3        q              assumption
+4        p ∧ q         ∧i 2,3
+5        r              → e 1,4
+6      q → r            → i 3-5
+7    p → (q → r)        → i 2-6
+
+Example 1.14 
+Prove the converse of the sequent in 1.13
+
+1     p → (q → r)         premise
+2     p ∧ q              assumption
+3     p                  ∧ e1 2
+4     q                  ∧ e2 2
+5     q → r              → e 1,3
+6     r                  → e 5,4
+7     p ∧ q → r         → i 2-6
+
+∴ since 1.13 and it converse 1.14 are both valid
+   p ∧ q → r ⊣⊢ p → (q → r) where ⊣⊢ indicates mutual 
+   provability between two formulas.
+
+Example 1.15    Prove p → q ⊢ p ∧ r → q ∧ r
+
+1     p → q                 premise
+2       p ∧ r              assumption
+3       p                   ∧ e1 2
+4       r                   ∧ e2 2
+5       q                   → e 1,3 (MP)
+6       q ∧ r              ∧ i 5,4
+7     p ∧ r → q ∧ r        → i 5,6
+
+=======================================================
+The rules for disjunction
+
+disjunction introduction           disjunction elimination
+
+   φ                 ψ               φ ∨ ψ  |φ| |ψ|
+------- ∨i1       ------- ∨i2               |.| |.|
+ φ ∨ ψ             φ ∨ ψ                    |χ| |χ|
+                                      --------------  ∨e
+                                             χ 
+=======================================================
+
+Example: Prove p ∨ q ⊢ q ∨ p
+1        p ∨ q         premise
+2          p           assumption
+3          q ∨ p       ∨i2 2
+4            q         assumption
+5            q ∨ p     ∨i1 4
+6        q ∨ p         ∨e 1, 2-3, 4-5
+
+Example 1.16  Prove q → r ⊢ p ∨ q → p ∨ r
+
+1       q → r               premise
+2         p ∨ q            assumption
+3           p               assumption
+4           p ∨ r          ∨i1 2
+5             q             assumption
+6             r             →i 1,5 (MP)
+7             p ∨ r           ∨i2 6
+8         p ∨ r             ∨i2, 3-4, 5-7
+9       p ∨ q → p ∨ r       →i 2, -8
+
+Example 1.17    Associativity of disjunction
+
+Prove (p ∨ q) ∨ r ⊢ p ∨ (q ∨ r)
+
+1     (p ∨ q) ∨ r          premise
+  ----------------------------------------------------- box 1 start
+2      p ∨ q             assumption
+  ----------------------------------------------------- box 2 start
+3      p                assumption
+4      p ∨ (q ∨ r)     ∨i1 3
+  ----------------------------------------------------- box 2 end
+  ----------------------------------------------------- box 3 start
+5     q                 assumption
+6     q ∨ r             ∨i1 5
+7     p ∨ (q ∨ r)       ∨i2 6
+  ----------------------------------------------------- box 3 end
+8     p ∨ (q ∨ r)        ∨e 2, 3-4, 5-7
+  ----------------------------------------------------- box 1 end
+  ----------------------------------------------------- box 4 start
+9     r                   assumption
+10    q ∨ r               ∨i2 9
+11    p ∨ (q ∨ r)         ∨i2 10
+  ----------------------------------------------------- box 4 end
+12    p ∨ (q ∨ r)         ∨e 1, 2-8, 9-11
+
+Example 1.18 Distributivity of conjunctions over disjunctions
+
+Prove p ∧ (q ∨ r) ⊢ (p ∧ q) ∨ (p ∧ r)
+
+1   p ∧ (q ∨ r)                     premise
+2   p                               ∧e1 1
+3   q ∨ r                           ∧e2 1
+  ----------------------------------------------------- box 1 start
+4   q                               assumption
+5   p ∧ q                           ∧i 2,4
+6   (p ∧ q) ∨ (p ∧ r)               ∨i1 5
+  ----------------------------------------------------- box 1 end
+  ----------------------------------------------------- box 2 start
+7   r                               assumption
+8   p ∧ r                           ∧i 2,7
+9   (p ∧ q) ∨ (p ∧ r)              ∨i2 8
+  ----------------------------------------------------- box 2 end
+8   (p ∧ q) ∨ (p ∧ r)               ∨e 3, 4-6, 7-9
+
+Proving the converse: (p ∧ q) ∨ (p ∧ r) ⊢ p ∧ (q ∨ r)
+
+1   (p ∧ q) ∨ (p ∧ r)               premise
+  ----------------------------------------------------- box 1 start
+2   p ∧ q                           assumption
+3   p                               ∧e1 2
+4   q                               ∧e2 2
+5   q ∨ r                           ∨i1 4
+6   p ∧ (q ∨ r)                     ∧i 3,5
+  ----------------------------------------------------- box 1 end
+7   p ∧ r                           assumption
+8   p                               ∧e1 7
+9   r                               ∧e2 7
+10  q ∨ r                           ∨i2 9
+11  p ∧ (q ∨ r)                     ∧i 8, 10
+  ----------------------------------------------------- box 2 end
+12  p ∧ (q ∨ r)                     ∨e 1, 2-6, 7-11
+
+============================================================
+Copy rule
+
+Formulas that have appeared previously in the proof may be copied 
+unless they depend on temporary assumptions whose box has already 
+been closed.
+============================================================
+
+
+Prove ⊢ p → (q → p)
+  ----------------------------------------------------- box 1 start
+1   p                               assumption
+  ----------------------------------------------------- box 2 start
+2   q                               assumption
+3   p                               copy 1
+  ----------------------------------------------------- box 2 end
+4   q → p                           →i 2,3
+  ----------------------------------------------------- box 1 end
+5   p → (q → p)                     → 1, 4
+
+============================================================
+The rules for negation
+
+                       ⊥ 
+bottom-elimination:  -----  ⊥e
+                       φ 
+
+From Wikipedia: Principle of explosion
+ex falso quodlibet: from a contradiction, anything follows
+
+Motivation
+
+1   φ  ∧ ¬φ           premise
+2   φ               ∧e1 1
+3   ¬φ              ∧e2 1
+4   φ ∨ ψ           ∨i1 2
+5   ψ               disjunctive syllogism 3,4
+6   (φ ∧ ¬φ) → ψ    →i 1-5   
+
+i.e., anything can follow from a contradiction
+
+                     φ  ¬φ 
+not-elimination:    ------- ¬e
+                       ⊥ 
+
+
+not-introduction:     φ
+                      :
+                      ⊥ 
+                     ----  ¬i
+                      ¬φ 
+
+
+============================================================
+
+Example 1.20      Prove ¬p ∨ q ⊢ p → q
+
+1   ¬p ∨ q              premise
+  ------------------------------------------- box 1 start
+2   ¬p                  premise
+  ------------------------------------------- box 2 start
+3   p                   assumption
+4   ⊥                   ¬e 3,2
+5   q                   ⊥e 4
+  ------------------------------------------- box 2 end
+6   p → q               →i 3-5
+  ------------------------------------------- box 1 end
+  ------------------------------------------- box 3 start
+7   q                   premise
+  ------------------------------------------- box 4 start
+8   p                   assumption
+9   q                   copy 7
+  ------------------------------------------- box 4 end
+10  p → q               →i 8,9
+  ------------------------------------------- box 3 end
+11  p → q               ∨e 1, 2-6, 7-10
+
+
+Example 1.21   Prove p → q, p → ¬q ⊢ ¬p
+
+1   p → q               premise
+2   p → ¬ q             premise
+  ------------------------------------------- box 1 start
+3   p                   assumption
+4   q                   →e 1,3 (MP)
+5   ¬q                  →e 2,3 (MP)
+6   ⊥                   ¬e 4,5
+  ------------------------------------------- box 1 end
+7   ¬p                  ¬i 3-6
+
+Example     Prove p → ¬p ⊢ ¬p
+
+1   p → ¬p              premise
+  ------------------------------------------- box 1 start
+2   p                   assumption
+3   ¬p                  →e 1,2 (MP)
+4   ⊥                   ¬e 2,3
+  ------------------------------------------- box 1 end
+5   ¬p                  ¬i 2-4
+
+Example 1.22    Prove p → (q → r), p, ¬r ⊢ ¬q
+
+1   p → (q → r)             premise
+2   p                       premise
+3   ¬r                      premise
+4   q → r                   →i 1,2 (MP)
+5   ¬q                      MT 4, 3
+
+Without using MT:
+
+1   p → (q → r)             premise
+2   p                       premise
+3   ¬r                      premise
+4   q → r                   →e 1,2 (MP)
+  ------------------------------------------- box 1 start
+5   q                       assumption
+6   r                       →e 4,5
+7   ⊥                       ¬e 6,3
+  ------------------------------------------- box 1 end
+9   ¬q                      ¬i, 5-7
+
+Example 1.22    Prove p ∧ ¬q → r, ¬r, p ⊢ q
+
+1   p ∧ ¬q → r                  premise
+2   ¬r                          premise
+3   p                           premise
+  ------------------------------------------- box 1 start
+4   ¬q                          assumption
+5   p ∧ ¬q                      ∧i 3,4
+6   r                           →e 1,5 (MP)
+7   ⊥                           ¬e 6,2
+  ------------------------------------------- box 1 end
+8   ¬¬q                         ¬i 4-7
+9   q                           ¬¬e 8
+
+
+§ 1.2.2 Derived rules
+
+Derivation of modus tollens     φ → ψ   ¬ψ
+                                ----------  MT
+                                   ¬φ
+
+1   φ → ψ                       premise
+2   ¬ ψ                         premise
+  ------------------------------------------- box 1 start
+3   φ                           assumption
+4   ψ                           →e 1,3
+5   ⊥                           ¬e 4,2
+  ------------------------------------------- box 1 end
+6   ¬ φ                         ¬i 3-5
+
+Derivation of ¬¬i        φ
+                       -----   ¬¬i
+                        ¬¬ φ   
+
+1   φ                           premise
+  ------------------------------------------- box 1 start
+2   ¬ φ                         assumption
+3   ⊥                           ¬e 1,2
+  ------------------------------------------- box 1 end
+4   ¬¬ φ                        ¬i 2-3
+
+
+Proof By Contradiction (reductio ad absurdum)
+
+      |¬ φ |
+      | .  |
+      | .  |
+      | .  |
+      | ⊥  |
+      ------   PBC
+         φ
+
+1   ¬ φ → ⊥                     premise
+  ------------------------------------------- box 1 start
+2   ¬ φ                         assumption
+3    ⊥                          →e 1,2 (MP)
+  ------------------------------------------- box 1 end
+4   ¬¬ φ                        ¬i 2-3
+5     φ                         ¬¬e 4 
+
+Law of the Excluded Middle (tertium non datur)
+
+    -------- LEM
+    φ ∨ ¬ φ
+
+Proof:
+
+  ------------------------------------------- box 1 start
+1   ¬(φ ∨ ¬ φ)                  assumption
+  ------------------------------------------- box 2 start
+2   φ                           assumption
+3   φ ∨ ¬ φ                     ∨i1 2
+4   ⊥                           ¬e 3,1
+  ------------------------------------------- box 2 end
+5   ¬ φ                         ¬i 2-4
+6   φ ∨ ¬ φ                     ∨i2 5
+7   ⊥                           ¬e 6,1
+  ------------------------------------------- box 1 end
+8   ¬¬ (φ ∨ ¬ φ)                ¬i 1-7
+9   φ ∨ ¬ φ                     ¬¬e 8
+
+Example 1.24   Prove p → q ⊢ ¬ p ∨ q
+
+1   p → q                       premise
+2   p ∨ ¬ p                     LEM
+  ------------------------------------------- box 1 start
+3   ¬ p                         assumption
+4   ¬ p ∨ q                     ∨i1 3
+  ------------------------------------------- box 1 end
+  ------------------------------------------- box 2 start
+5   p                           assumption
+6   q                           →e 1,5 (MP)
+7   ¬ p ∨ q                     ∨i2 6
+  ------------------------------------------- box 2 end
+8   ¬ p ∨ q                     ∨e 2, 3-4, 5-7
+
+
+§ 1.2.4 Provable equivalence
+
+Prove the following equivalent formulas:
+
+¬(p ∧ q) ⊣⊢ ¬q ∨ ¬p
+
+1   ¬(p ∧ q)                    premise
+2   ¬q                          ∧e2 1
+3   ¬q ∨ ¬p                    ∨i1 2
+                    or
+2   ¬p                          ∧e1 1
+3   ¬q ∨ ¬p                    ∨i2 2
+
+Proving the reverse:
+
+1   ¬q ∨ ¬p                     premise
+  ------------------------------------------- box 1 start
+2   ¬q                           assumption
+  ------------------------------------------- box 2 start
+3   p ∧ q                       assumption
+4     ⊥
+  ------------------------------------------- box 2 end
+5   ¬ (p ∧ q)                   ¬i 2-4
+
+n   ¬(p ∧ q)
+
+
