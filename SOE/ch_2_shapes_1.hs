@@ -85,17 +85,15 @@ area (Polygon (v1:vs))  = polyArea vs
                                                           + polyArea (v3:vs')
                                   polyArea _           =  0
 
+{- Exercise 2.4  Define a function isConvex :: Shape -> Bool that
+determines whether or not its argument is a convex shape.
 
-vexPoly = Polygon [(3.0,4.0), (3.0,2.0), (1.0,2.0), (1.0,4.0)]
-cavePoly = Polygon [(1,1), (3,4), (4,1), (3,2)]
-triPoly = Polygon [(3.0,4.0), (3.0,2.0), (1.0,2.0)]
-
-rotate [] = []
-rotate xs = tail xs ++ [head xs]
-
-orderVertices (Polygon vs) = minimum (take (length vs) (iterate rotate vs))
-
-closeLoop xs = xs ++ [head xs]
+I've defined isConvex to work on polygons using the property that the
+cross-products of the vectors defined by adjacent sides will all have
+the same sign for convex polygons, but will have different signs for
+concave polygons. The degenerate case of 3 or more collinear points is
+allowed devolve into a polygon with fewer sides.
+-}
 
 -- define some helper functions
 
@@ -107,21 +105,33 @@ vecs                       :: (Num t, Num t1) => [(t, t1)] -> [(t, t1)]
 vecs [x]                   =  []
 vecs ((x1,y1):(x2,y2):xys) =  (x2-x1, y2-y1): vecs ((x2,y2):xys)
 
+-- compute the 2-D cross-product
 crossProduct                       :: Num t => [(t,t)] -> [t]
 crossProduct [x]                   =  []
-crossProduct ((x1,y1):(x2,y2):xys) =  (x1*y2-x2*y1): crossProduct ((x2,y2):xys)
+crossProduct ((x1,y1):(x2,y2):xys) =  (x1*y2 - x2*y1): crossProduct ((x2,y2):xys)
 
-isConvex' poly | all (< 0) xs = True
-               | all (> 0) xs = True
-               | otherwise    = False
-                 where     xs = (crossProduct . vecs . getVertices) poly
+isConvex                      :: Shape -> Bool
+isConvex poly | all (<= 0) xs =  True
+              | all (>= 0) xs =  True
+              | otherwise     =  False
+                where     xs  =  (crossProduct . vecs . getVertices) poly
 
--- Test data
+-- Testing:
 
-t1 = [(1,2),(1,4),(3,4)]         -- Triangle
-t2 = [(1,2),(1,4),(3,4),(3,2)]   -- Convex  Quadrilateral
-t3 = [(1,2),(1,4),(3,4),(5,4)]   -- Convex  Quadrilateral (degenerate)
-t4 = [(1,1),(3,4),(4,1),(3,2)]   -- Concave Quadrilateral
-t5 = [(3, 0), (1, 1), (0, 4), (3, 6), (4, 4)] -- Convex Pentgram
-t6 = [(3, 0), (3, 1), (0, 4), (3, 6), (4, 4)] -- Concave Pentgram
-t7 = [(3, 0), (3, 1), (0, 4), (3, 4), (4, 4)] -- Concave Pentgram (degenerate)
+tstPoly = map Polygon
+              [[(1,2),(1,4),(3,4)],               -- Triangle
+               [(1,2),(1,4),(3,4),(3,2)],         -- Convex  Quadrilateral
+               [(1,2),(1,4),(3,4),(5,4)],         -- Convex  Quadrilateral (degenerate)
+               [(1,1),(3,4),(4,1),(3,2)],                 -- Concave Quadrilateral
+               [(3, 0), (1, 1), (0, 4), (3, 6), (4, 4)],  -- Convex Pentgram
+               [(3, 0), (3, 1), (0, 4), (3, 6), (4, 4)],  -- Concave Pentgram
+               [(3, 0), (1, 1), (0, 4), (3, 4), (4, 4)]] -- Concave Pentgram (degen)
+
+expectedResults = [True,True,True,False,True,False,True]
+actualResults = map isConvex tstPoly
+
+tstResults :: [Bool] -> [Bool] -> [Char]
+tstResults actual expected | actual == expected = "All tests passed."
+                           | otherwise          = "Some tests failed."
+
+results = tstResults actualResults expectedResults
