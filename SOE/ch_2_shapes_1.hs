@@ -1,4 +1,3 @@
-import Data.List
 
 type Radius = Float
 type Side   = Float
@@ -100,10 +99,10 @@ allowed devolve into a polygon with fewer sides.
 getVertices              :: Shape -> [Vertex]
 getVertices (Polygon vs) =  vs ++ [head vs]
 
--- vecs turns an ordered list of vertices into an order list of vectors.
-vecs                       :: (Num t, Num t1) => [(t, t1)] -> [(t, t1)]
-vecs [x]                   =  []
-vecs ((x1,y1):(x2,y2):xys) =  (x2-x1, y2-y1): vecs ((x2,y2):xys)
+-- getVectors turns an ordered list of vertices into an order list of vectors.
+getVectors                       :: (Num t, Num t1) => [(t, t1)] -> [(t, t1)]
+getVectors [x]                   =  []
+getVectors ((x1,y1):(x2,y2):xys) =  (x2-x1, y2-y1): getVectors ((x2,y2):xys)
 
 -- compute the 2-D cross-product
 crossProduct                       :: Num t => [(t,t)] -> [t]
@@ -114,7 +113,7 @@ isConvex                      :: Shape -> Bool
 isConvex poly | all (<= 0) xs =  True
               | all (>= 0) xs =  True
               | otherwise     =  False
-                where     xs  =  (crossProduct . vecs . getVertices) poly
+                where     xs  =  (crossProduct . getVectors . getVertices) poly
 
 -- Testing:
 
