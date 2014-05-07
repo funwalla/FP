@@ -1,3 +1,4 @@
+import Data.List
 
 type Radius = Float
 type Side   = Float
@@ -84,3 +85,43 @@ area (Polygon (v1:vs))  = polyArea vs
                                                           + polyArea (v3:vs')
                                   polyArea _           =  0
 
+
+vexPoly = Polygon [(3.0,4.0), (3.0,2.0), (1.0,2.0), (1.0,4.0)]
+cavePoly = Polygon [(1,1), (3,4), (4,1), (3,2)]
+triPoly = Polygon [(3.0,4.0), (3.0,2.0), (1.0,2.0)]
+
+rotate [] = []
+rotate xs = tail xs ++ [head xs]
+
+orderVertices (Polygon vs) = minimum (take (length vs) (iterate rotate vs))
+
+closeLoop xs = xs ++ [head xs]
+
+-- define some helper functions
+
+getVertices              :: Shape -> [Vertex]
+getVertices (Polygon vs) =  vs ++ [head vs]
+
+-- vecs turns an ordered list of vertices into an order list of vectors.
+vecs                       :: (Num t, Num t1) => [(t, t1)] -> [(t, t1)]
+vecs [x]                   =  []
+vecs ((x1,y1):(x2,y2):xys) =  (x2-x1, y2-y1): vecs ((x2,y2):xys)
+
+crossProduct                       :: Num t => [(t,t)] -> [t]
+crossProduct [x]                   =  []
+crossProduct ((x1,y1):(x2,y2):xys) =  (x1*y2-x2*y1): crossProduct ((x2,y2):xys)
+
+isConvex' poly | all (< 0) xs = True
+               | all (> 0) xs = True
+               | otherwise    = False
+                 where     xs = (crossProduct . vecs . getVertices) poly
+
+-- Test data
+
+t1 = [(1,2),(1,4),(3,4)]         -- Triangle
+t2 = [(1,2),(1,4),(3,4),(3,2)]   -- Convex  Quadrilateral
+t3 = [(1,2),(1,4),(3,4),(5,4)]   -- Convex  Quadrilateral (degenerate)
+t4 = [(1,1),(3,4),(4,1),(3,2)]   -- Concave Quadrilateral
+t5 = [(3, 0), (1, 1), (0, 4), (3, 6), (4, 4)] -- Convex Pentgram
+t6 = [(3, 0), (3, 1), (0, 4), (3, 6), (4, 4)] -- Concave Pentgram
+t7 = [(3, 0), (3, 1), (0, 4), (3, 4), (4, 4)] -- Concave Pentgram (degenerate)
