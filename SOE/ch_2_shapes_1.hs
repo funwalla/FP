@@ -118,13 +118,13 @@ isConvex poly | all (<= 0) xs =  True
 -- Testing:
 
 tstPoly = map Polygon
-              [[(1,2),(1,4),(3,4)],               -- Triangle
-               [(1,2),(1,4),(3,4),(3,2)],         -- Convex  Quadrilateral
-               [(1,2),(1,4),(3,4),(5,4)],         -- Convex  Quadrilateral (degenerate)
-               [(1,1),(3,4),(4,1),(3,2)],                 -- Concave Quadrilateral
-               [(3, 0), (1, 1), (0, 4), (3, 6), (4, 4)],  -- Convex Pentgram
-               [(3, 0), (3, 1), (0, 4), (3, 6), (4, 4)],  -- Concave Pentgram
-               [(3, 0), (1, 1), (0, 4), (3, 4), (4, 4)]] -- Concave Pentgram (degen)
+              [[(1,2),(1,4),(3,4)],         -- Triangle
+               [(1,2),(1,4),(3,4),(3,2)],   -- Convex  Quadrilateral
+               [(1,2),(1,4),(3,4),(5,4)],   -- Convex  Quadrilateral (degenerate)
+               [(1,1),(3,4),(4,1),(3,2)],   -- Concave Quadrilateral
+               [(3, 0), (1, 1), (0, 4), (3, 6), (4, 4)], -- Convex Pent.
+               [(3, 0), (3, 1), (0, 4), (3, 6), (4, 4)], -- Concave Pent.
+               [(3, 0), (1, 1), (0, 4), (3, 4), (4, 4)]] -- Concave Pent. (degen)
 
 expectedResults = [True,True,True,False,True,False,True]
 actualResults = map isConvex tstPoly
@@ -134,3 +134,47 @@ tstResults actual expected | actual == expected = "All tests passed."
                            | otherwise          = "Some tests failed."
 
 results = tstResults actualResults expectedResults
+
+
+{- Exercise 2.5
+    Consider a polygon in quadrant 1 of the Cartesian plane
+    (i.e., every vertex has positive x and y coordinates).
+    Then every pair of adjacent vertices forms a trapeziod
+    with respect to the x-axis. Starting at any vertex and
+    working clockwise, compute these areas one-by-one, counting
+    the area as positive if the x-coordinate increases, and
+    negative if it decreases. The sum of these areas is then
+    the area of the polygon.
+-}
+
+tst  = Polygon [(1, 0), (2, 4), (3, 0)]
+tst' = Polygon [(1, 0), (3, 0), (2, 4)]
+
+areaPoly poly = mapArea vs
+              where vs | isClockwise poly = getVertices poly
+                       | otherwise        = reverse (getVertices poly)
+
+-- helper functions
+mapArea [p] = 0
+mapArea (p1:p2:ps) | fst p1 < fst p2 = trapArea p1 p2 + mapArea (p2:ps)
+                   | otherwise       = -trapArea p1 p2 + mapArea (p2:ps)
+
+trapArea (x1,y1) (x2,y2) | y1 < y2   = xlen  * y1 + 0.5 * xlen * ylen
+                         | otherwise = xlen  * y2 + 0.5 * xlen * ylen
+                                       where xlen = abs (x2 - x1)
+                                             ylen = abs (y2 - y1)
+
+isClockwise poly | sign <= 0 = True
+                 | sign >  0 = False
+                   where sign = (signedArea . getVertices) poly
+
+signedArea [x] = 0
+signedArea ((x1,y1):(x2,y2):xs) = 0.5 * (x1*y2 - x2*y1) + signedArea ((x2,y2):xs)
+
+
+
+
+
+
+
+
