@@ -1,3 +1,8 @@
+module Shape (Shape (Rectangle, Ellipse, RtTriangle, Polygon),
+              Radius, Side, Vertex,
+              square, circle, distBetween,
+              area, areaPoly, signedArea, getVertices
+             ) where
 
 type Radius = Float
 type Side   = Float
