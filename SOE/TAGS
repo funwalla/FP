@@ -1,0 +1,598 @@
+
+Ch_1_problem_solving.hs,70
+simple simple39,40
+simple simple40,41
+f f42,43
+sign sign48,49
+
+ch_2_shapes.hs,463
+type Radius Radius1,2
+type Side Side2,3
+type Vertex Vertex3,4
+data Shape Shape5,6
+data Shape = Rectangle Rectangle5,6
+           | Ellipse Ellipse6,7
+           | RtTriangle RtTriangle7,8
+           | Polygon Polygon8,9
+rectangle rectangle13,14
+rectangle rectangle14,15
+rtTriangle rtTriangle16,17
+rtTriangle rtTriangle17,18
+regularPolygon regularPolygon24,25
+regularPolygon2 regularPolygon228,29
+regularPolygon2 regularPolygon229,30
+
+Ch_2_shapes_1.hs,1417
+type Radius Radius1,2
+type Side Side2,3
+type Vertex Vertex3,4
+data Shape Shape5,6
+data Shape =   Rectangle Rectangle5,6
+             | Ellipse Ellipse6,7
+             | RtTriangle RtTriangle7,8
+             | Polygon Polygon8,9
+square square11,12
+square square12,13
+circle circle14,15
+circle circle15,16
+rectangle rectangle21,22
+rtTriangle rtTriangle23,24
+regularPolygon regularPolygon32,33
+regularPolygon' regularPolygon'55,56
+regularPolygon' regularPolygon'56,57
+distBetween distBetween66,67
+distBetween distBetween67,68
+triArea triArea70,71
+area area76,77
+area area77,78
+getVertices getVertices98,99
+getVertices getVertices99,100
+getVectors getVectors102,103
+getVectors getVectors103,104
+crossProduct crossProduct107,108
+crossProduct crossProduct108,109
+isConvex isConvex111,112
+isConvex isConvex112,113
+tstPoly tstPoly119,120
+expectedResults expectedResults128,129
+actualResults actualResults129,130
+tstResults tstResults131,132
+tstResults tstResults132,133
+results results135,136
+areaPoly areaPoly154,155
+areaPoly areaPoly155,156
+trapArea trapArea160,161
+trapArea trapArea161,162
+isClockwise isClockwise165,166
+isClockwise isClockwise166,167
+signedArea signedArea170,171
+signedArea signedArea171,172
+tst1 tst1177,178
+tst2 tst2178,179
+tst3 tst3179,180
+tst4 tst4180,181
+trap' trap'182,183
+tstTraps tstTraps184,185
+
+Ch_3_simple_graphics_1.hs,382
+module Ch_3_simple_graphics_1 Ch_3_simple_graphics_10,1
+main0 main04,5
+main0 main05,6
+spaceClose spaceClose11,12
+spaceClose spaceClose12,13
+putCharList putCharList16,17
+putCharList putCharList17,18
+putCharListLn putCharListLn20,21
+putCharListLn putCharListLn21,22
+actionList actionList24,25
+actionList actionList25,26
+doList doList27,28
+doList doList28,29
+
+flycheck_Ch_3_simple_graphics_1.hs,382
+module Ch_3_simple_graphics_1 Ch_3_simple_graphics_10,1
+main0 main04,5
+main0 main05,6
+spaceClose spaceClose11,12
+spaceClose spaceClose12,13
+putCharList putCharList16,17
+putCharList putCharList17,18
+putCharListLn putCharListLn20,21
+putCharListLn putCharListLn21,22
+actionList actionList24,25
+actionList actionList25,26
+doList doList27,28
+doList doList28,29
+
+Shape.hs,1430
+type Radius Radius6,7
+type Side Side7,8
+type Vertex Vertex8,9
+data Shape Shape10,11
+data Shape =   Rectangle Rectangle10,11
+             | Ellipse Ellipse11,12
+             | RtTriangle RtTriangle12,13
+             | Polygon Polygon13,14
+square square16,17
+square square17,18
+circle circle19,20
+circle circle20,21
+rectangle rectangle26,27
+rtTriangle rtTriangle28,29
+regularPolygon regularPolygon37,38
+regularPolygon' regularPolygon'60,61
+regularPolygon' regularPolygon'61,62
+distBetween distBetween71,72
+distBetween distBetween72,73
+triArea triArea75,76
+area area81,82
+area area82,83
+getVertices getVertices103,104
+getVertices getVertices104,105
+getVectors getVectors107,108
+getVectors getVectors108,109
+crossProduct crossProduct112,113
+crossProduct crossProduct113,114
+isConvex isConvex116,117
+isConvex isConvex117,118
+tstPoly tstPoly124,125
+expectedResults expectedResults133,134
+actualResults actualResults134,135
+tstResults tstResults136,137
+tstResults tstResults137,138
+results results140,141
+areaPoly areaPoly159,160
+areaPoly areaPoly160,161
+trapArea trapArea165,166
+trapArea trapArea166,167
+isClockwise isClockwise170,171
+isClockwise isClockwise171,172
+signedArea signedArea175,176
+signedArea signedArea176,177
+tst1 tst1182,183
+tst2 tst2183,184
+tst3 tst3184,185
+tst4 tst4185,186
+trap' trap'187,188
+tstTraps tstTraps189,190
+
+SOE.hs,5115
+module SOE SOE0,1
+import import59,60
+runGraphics runGraphics67,68
+runGraphics runGraphics68,69
+type Title Title70,71
+type Size Size71,72
+data Window Window73,74
+data Window = Window Window73,74
+  graphicVar graphicVar74,75
+  eventsChan eventsChan75,76
+newtype Graphic Graphic79,80
+newtype Graphic = Graphic Graphic79,80
+initialized, opened opened81,82
+initialized,initialized81,82
+initialized initialized82,83
+opened opened83,84
+initialize initialize85,86
+openWindow openWindow93,94
+openWindow openWindow94,95
+openWindowEx openWindowEx98,99
+openWindowEx openWindowEx99,100
+getWindowSize getWindowSize143,144
+getWindowSize getWindowSize144,145
+clearWindow clearWindow148,149
+clearWindow clearWindow149,150
+drawInWindow drawInWindow151,152
+drawInWindow drawInWindow152,153
+updateWindowIfDirty updateWindowIfDirty158,159
+drawInWindowNow drawInWindowNow164,165
+drawInWindowNow drawInWindowNow165,166
+setGraphic setGraphic171,172
+setGraphic setGraphic172,173
+closeWindow closeWindow176,177
+closeWindow closeWindow177,178
+closeWindow_ closeWindow_179,180
+newtype RedrawMode RedrawMode189,190
+newtype RedrawMode = RedrawMode RedrawMode189,190
+drawGraphic drawGraphic191,192
+drawGraphic drawGraphic192,193
+drawBufferedGraphic drawBufferedGraphic194,195
+drawBufferedGraphic drawBufferedGraphic195,196
+data Color Color197,198
+data Color = BlackBlack197,198
+           | BlueBlue198,199
+           | GreenGreen199,200
+           | CyanCyan200,201
+           | RedRed201,202
+           | MagentaMagenta202,203
+           | YellowYellow203,204
+           | WhiteWhite204,205
+type Angle Angle207,208
+emptyGraphic emptyGraphic209,210
+emptyGraphic emptyGraphic210,211
+overGraphic overGraphic214,215
+overGraphic overGraphic215,216
+overGraphics overGraphics217,218
+overGraphics overGraphics218,219
+colorToRGB colorToRGB220,221
+colorToRGB colorToRGB221,222
+withColor withColor230,231
+withColor withColor231,232
+text text233,234
+text text234,235
+type Point Point239,240
+ellipse ellipse241,242
+ellipse ellipse242,243
+shearEllipse shearEllipse248,249
+shearEllipse shearEllipse249,250
+line line265,266
+line line266,267
+polygon polygon271,272
+polygon polygon272,273
+polyline polyline277,278
+polyline polyline278,279
+polyBezier polyBezier283,284
+polyBezier polyBezier284,285
+bezier bezier295,296
+bezier bezier296,297
+arc arc301,302
+arc arc302,303
+createRectangle createRectangle313,314
+createRectangle createRectangle314,315
+createEllipse createEllipse325,326
+createEllipse createEllipse326,327
+createPolygon createPolygon336,337
+createPolygon createPolygon337,338
+andRegion, orRegion, xorRegion, diffRegion diffRegion347,348
+andRegion, orRegion, xorRegion,xorRegion347,348
+andRegion, orRegion,orRegion347,348
+andRegion,andRegion347,348
+type Region Region352,353
+type Conjuction Conjuction353,354
+data Atom Atom354,355
+data Atom = Pos Pos354,355
+data Atom = Pos Atom' | Neg Neg354,355
+type Atom' Atom'355,356
+instance instance356,357
+conjuction conjuction360,361
+conjuction conjuction361,362
+disjuction disjuction362,363
+negTerm negTerm363,364
+data RegionOp RegionOp372,373
+data RegionOp = AND AND372,373
+data RegionOp = AND | OR OR372,373
+data RegionOp = AND | OR | XOR XOR372,373
+data RegionOp = AND | OR | XOR | DIFFDIFF372,373
+andRegion andRegion374,375
+orRegion orRegion375,376
+xorRegion xorRegion376,377
+diffRegion diffRegion377,378
+drawRegion drawRegion379,380
+drawRegion drawRegion380,381
+--combineRegion --combineRegion416,417
+combineRegion combineRegion417,418
+data Event Event428,429
+data Event = Key Key428,429
+               char char429,430
+               isDown isDown430,431
+           | Button Button432,433
+              pt pt433,434
+              isLeft isLeft434,435
+              isDown isDown435,436
+           | MouseMove MouseMove437,438
+               pt pt438,439
+           | Resize Resize440,441
+           | RefreshRefresh441,442
+           | ClosedClosed442,443
+getWindowEvent getWindowEvent445,446
+getWindowEvent getWindowEvent446,447
+maybeGetWindowEvent maybeGetWindowEvent450,451
+maybeGetWindowEvent maybeGetWindowEvent451,452
+getKeyEx getKeyEx474,475
+getKeyEx getKeyEx475,476
+getKey getKey483,484
+getKey getKey484,485
+getButton getButton490,491
+getButton getButton491,492
+getLBP getLBP498,499
+getLBP getLBP499,500
+getRBP getRBP501,502
+getRBP getRBP502,503
+timeGetTime timeGetTime505,506
+timeGetTime timeGetTime506,507
+word32ToInt word32ToInt510,511
+word32ToInt word32ToInt511,512
+vertex4 vertex4517,518
+vertex4 vertex4518,519
+vertex3 vertex3520,521
+vertex3 vertex3521,522
+normaliseBounds normaliseBounds523,524
+normaliseBounds normaliseBounds524,525
+normaliseBounds' normaliseBounds'530,531
+normaliseBounds' normaliseBounds'531,532
+fromPoint fromPoint537,538
+fromPoint fromPoint538,539
+fromSize fromSize540,541
+fromPosition fromPosition543,544
+circle circle545,546
+segment segment549,550
+
+SOE-20120121\SOE\haskore\src\Fractals.hs,587
+module FractalMusic FractalMusic0,1
+type Vector Vector4,5
+type Matrix Matrix5,6
+type AT AT6,7
+type IFS IFS7,8
+vadd vadd12,13
+vadd vadd13,14
+vvmult vvmult15,16
+vvmult vvmult16,17
+mvmult mvmult18,19
+mvmult mvmult19,20
+cvmult cvmult21,22
+cvmult cvmult22,23
+w1,w2,w3 w332,33
+w1,w2,w232,33
+w1,w132,33
+w1 w133,34
+w2 w235,36
+w3 w337,38
+init0 init040,41
+init0 init041,42
+ws ws45,46
+ws ws46,47
+result result50,51
+random random57,58
+mkNote mkNote61,62
+sourceToHaskore sourceToHaskore63,64
+sourceToHaskore sourceToHaskore64,65
+sth sth66,67
+
+SOE-20120121\SOE\haskore\src\Haskore.hs,28
+module Haskore(Haskore0,1
+
+SOE-20120121\SOE\haskore\src\HaskoreUtils.hs,752
+module HaskoreUtils(HaskoreUtils4,5
+infixr 2 `andOnError`andOnError15,16
+assert assert17,18
+assert assert18,19
+unlinesS unlinesS21,22
+unlinesS unlinesS22,23
+concatS concatS24,25
+concatS concatS25,26
+rightS, leftS, centreS centreS27,28
+rightS, leftS,leftS27,28
+rightS,rightS27,28
+rightS rightS28,29
+leftS leftS29,30
+centreS centreS30,31
+right,left, centre centre32,33
+right,left,left32,33
+right,right32,33
+right right33,34
+left left34,35
+centre centre35,36
+spaces spaces40,41
+spaces spaces41,42
+andOnError andOnError85,86
+butOnError butOnError91,92
+m `butOnError`butOnError92,93
+zeroOrMore, oneOrMore oneOrMore95,96
+zeroOrMore,zeroOrMore95,96
+zeroOrMore zeroOrMore96,97
+oneOrMore oneOrMore97,98
+
+SOE-20120121\SOE\haskore\src\Monads.hs,1133
+module Monads(Monads12,13
+newtype SR SR49,50
+newtype SR s a = SR SR49,50
+runSR runSR51,52
+getSR getSR52,53
+instance instance54,55
+runSR runSR61,62
+getSR getSR62,63
+unSR unSR65,66
+unSR unSR66,67
+newtype State State72,73
+newtype State s a = S S72,73
+runS runS74,75
+modS modS75,76
+setS setS76,77
+getS getS77,78
+runS runS86,87
+modS modS87,88
+setS setS88,89
+getS getS89,90
+unS unS92,93
+unS unS93,94
+newtype IOS IOS99,100
+newtype IOS s a = IOS IOS99,100
+runIOS runIOS101,102
+getIOS getIOS102,103
+setIOS setIOS103,104
+modIOS modIOS104,105
+runIOS runIOS113,114
+modIOS modIOS114,115
+setIOS setIOS115,116
+getIOS getIOS116,117
+unIOS unIOS119,120
+unIOS unIOS120,121
+newtype Output Output127,128
+newtype Output s a = O O127,128
+runO runO129,130
+outO outO130,131
+runO runO139,140
+outO outO140,141
+unO unO143,144
+unO unO144,145
+newtype CPS CPS150,151
+newtype CPS r a = CPS CPS150,151
+runCPS runCPS152,153
+callcc callcc153,154
+getcc getcc154,155
+runCPS runCPS163,164
+callcc callcc164,165
+getcc getcc165,166
+unCPS unCPS167,168
+unCPS unCPS168,169
+
+SOE-20120121\SOE\src\SOE.hs,5114
+module SOE SOE0,1
+import import58,59
+runGraphics runGraphics66,67
+runGraphics runGraphics67,68
+type Title Title69,70
+type Size Size70,71
+data Window Window72,73
+data Window = Window Window72,73
+  graphicVar graphicVar73,74
+  eventsChan eventsChan74,75
+newtype Graphic Graphic78,79
+newtype Graphic = Graphic Graphic78,79
+initialized, opened opened80,81
+initialized,initialized80,81
+initialized initialized81,82
+opened opened82,83
+initialize initialize84,85
+openWindow openWindow92,93
+openWindow openWindow93,94
+openWindowEx openWindowEx97,98
+openWindowEx openWindowEx98,99
+getWindowSize getWindowSize142,143
+getWindowSize getWindowSize143,144
+clearWindow clearWindow147,148
+clearWindow clearWindow148,149
+drawInWindow drawInWindow150,151
+drawInWindow drawInWindow151,152
+updateWindowIfDirty updateWindowIfDirty157,158
+drawInWindowNow drawInWindowNow163,164
+drawInWindowNow drawInWindowNow164,165
+setGraphic setGraphic170,171
+setGraphic setGraphic171,172
+closeWindow closeWindow175,176
+closeWindow closeWindow176,177
+closeWindow_ closeWindow_178,179
+newtype RedrawMode RedrawMode188,189
+newtype RedrawMode = RedrawMode RedrawMode188,189
+drawGraphic drawGraphic190,191
+drawGraphic drawGraphic191,192
+drawBufferedGraphic drawBufferedGraphic193,194
+drawBufferedGraphic drawBufferedGraphic194,195
+data Color Color196,197
+data Color = BlackBlack196,197
+           | BlueBlue197,198
+           | GreenGreen198,199
+           | CyanCyan199,200
+           | RedRed200,201
+           | MagentaMagenta201,202
+           | YellowYellow202,203
+           | WhiteWhite203,204
+type Angle Angle206,207
+emptyGraphic emptyGraphic208,209
+emptyGraphic emptyGraphic209,210
+overGraphic overGraphic213,214
+overGraphic overGraphic214,215
+overGraphics overGraphics216,217
+overGraphics overGraphics217,218
+colorToRGB colorToRGB219,220
+colorToRGB colorToRGB220,221
+withColor withColor229,230
+withColor withColor230,231
+text text232,233
+text text233,234
+type Point Point238,239
+ellipse ellipse240,241
+ellipse ellipse241,242
+shearEllipse shearEllipse247,248
+shearEllipse shearEllipse248,249
+line line264,265
+line line265,266
+polygon polygon270,271
+polygon polygon271,272
+polyline polyline276,277
+polyline polyline277,278
+polyBezier polyBezier282,283
+polyBezier polyBezier283,284
+bezier bezier294,295
+bezier bezier295,296
+arc arc300,301
+arc arc301,302
+createRectangle createRectangle312,313
+createRectangle createRectangle313,314
+createEllipse createEllipse324,325
+createEllipse createEllipse325,326
+createPolygon createPolygon335,336
+createPolygon createPolygon336,337
+andRegion, orRegion, xorRegion, diffRegion diffRegion346,347
+andRegion, orRegion, xorRegion,xorRegion346,347
+andRegion, orRegion,orRegion346,347
+andRegion,andRegion346,347
+type Region Region351,352
+type Conjuction Conjuction352,353
+data Atom Atom353,354
+data Atom = Pos Pos353,354
+data Atom = Pos Atom' | Neg Neg353,354
+type Atom' Atom'354,355
+instance instance355,356
+conjuction conjuction359,360
+conjuction conjuction360,361
+disjuction disjuction361,362
+negTerm negTerm362,363
+data RegionOp RegionOp371,372
+data RegionOp = AND AND371,372
+data RegionOp = AND | OR OR371,372
+data RegionOp = AND | OR | XOR XOR371,372
+data RegionOp = AND | OR | XOR | DIFFDIFF371,372
+andRegion andRegion373,374
+orRegion orRegion374,375
+xorRegion xorRegion375,376
+diffRegion diffRegion376,377
+drawRegion drawRegion378,379
+drawRegion drawRegion379,380
+--combineRegion --combineRegion415,416
+combineRegion combineRegion416,417
+data Event Event427,428
+data Event = Key Key427,428
+               char char428,429
+               isDown isDown429,430
+           | Button Button431,432
+              pt pt432,433
+              isLeft isLeft433,434
+              isDown isDown434,435
+           | MouseMove MouseMove436,437
+               pt pt437,438
+           | Resize Resize439,440
+           | RefreshRefresh440,441
+           | ClosedClosed441,442
+getWindowEvent getWindowEvent444,445
+getWindowEvent getWindowEvent445,446
+maybeGetWindowEvent maybeGetWindowEvent449,450
+maybeGetWindowEvent maybeGetWindowEvent450,451
+getKeyEx getKeyEx473,474
+getKeyEx getKeyEx474,475
+getKey getKey482,483
+getKey getKey483,484
+getButton getButton488,489
+getButton getButton489,490
+getLBP getLBP496,497
+getLBP getLBP497,498
+getRBP getRBP499,500
+getRBP getRBP500,501
+timeGetTime timeGetTime503,504
+timeGetTime timeGetTime504,505
+word32ToInt word32ToInt508,509
+word32ToInt word32ToInt509,510
+vertex4 vertex4515,516
+vertex4 vertex4516,517
+vertex3 vertex3518,519
+vertex3 vertex3519,520
+normaliseBounds normaliseBounds521,522
+normaliseBounds normaliseBounds522,523
+normaliseBounds' normaliseBounds'528,529
+normaliseBounds' normaliseBounds'529,530
+fromPoint fromPoint535,536
+fromPoint fromPoint536,537
+fromSize fromSize538,539
+fromPosition fromPosition541,542
+circle circle543,544
+segment segment547,548
